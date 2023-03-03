@@ -1,0 +1,236 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+:root {
+  --primaryBtn: #1a1a40;
+}
+[data-theme="dark"] {
+  --primaryBtn: #ff6464;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+.container-fluid {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.headding {
+  font-size: 40px;
+  padding-top: 50px;
+  text-align: center;
+  color: var(--black);
+}
+.login {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+.login-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 500px;
+  border-right: 1px solid var(--border);
+  padding: 0 20px;
+  margin: 50px 0;
+}
+.login-main .form-sign {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.login-main .text-field {
+  display: flex;
+  flex-direction: column;
+}
+.login-main .text-field .error {
+  color: red;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.login-main .form-sign input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  font-size: 20px;
+  color: var(--black);
+  background-color: var(--lightMode);
+}
+.login-main .form-sign label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.login-main .form-sign button {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: var(--primaryBtn);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+.login_main-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(100% - 500px);
+  padding-left: 20px;
+  gap: 10px;
+}
+.login_main-right button {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: var(--primaryBtn);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* sign up */
+.signup {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+.signup-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 800px;
+  padding: 0 20px;
+  margin-bottom: 50px;
+}
+.signup-main .form-sign {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.signup-main .text-field {
+  display: flex;
+  flex-direction: column;
+}
+.signup-main .text-field .error {
+  color: red;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.signup-main .text-field select {
+  width: 300px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--black);
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: var(--lightMode);
+}
+.signup-main .form-sign input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px;
+  font-size: 20px;
+  color: var(--black);
+  background-color: var(--lightMode);
+}
+.signup-main .form-sign label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.signup-main .form-sign button {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: var(--primaryBtn);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+@media screen and (max-width: 1023.98px) {
+  .container-fluid {
+    padding: 0 10px;
+  }
+  .container {
+    padding: 0 10px;
+  }
+
+  .signup-main {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .signup-main .form-sign select {
+    width: 100%;
+  }
+  .signup-main .form-sign input {
+    width: 100%;
+  }
+  .login {
+    flex-direction: column;
+  }
+  .login-main {
+    width: 100%;
+  }
+  .login_main-right {
+    width: 100%;
+  }
+}

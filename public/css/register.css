@@ -1,0 +1,152 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  line-height: 1.5;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  outline: none;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+:root {
+  --primary-color: #1a1a40;
+  --light-color: #ed6663;
+  --secondary-color: #f6e3c5;
+  --grey-secondary-color: #999;
+}
+[data-theme="dark"] {
+  --primary-color: #fff;
+  --light-color: #ed6663;
+  --secondary-color: #1a1a40;
+  --grey-secondary-color: #999;
+}
+.container-fluid {
+  max-width: 1200px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container {
+  max-width: 960px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headding {
+  font-size: 40px;
+  padding-top: 50px;
+  text-align: center;
+  color: var(--primary-color);
+}
+.login {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 50px;
+}
+.signup-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 800px;
+  padding: 0 20px;
+}
+.form-sign {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+.text-field {
+  display: flex;
+  flex-direction: column;
+}
+.text-field .error {
+  color: red;
+  font-size: 12px;
+  padding: 0 10px;
+}
+.text-field select {
+  width: 300px;
+  height: 40px;
+  border: 1px solid var(--grey-secondary-color);
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.form-sign input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--grey-secondary-color);
+  padding: 10px;
+  font-size: 20px;
+  color: var(--primary-colorr);
+}
+.form-sign label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.form-sign button {
+  padding: 10px 30px;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+@media screen and (max-width: 1023.98px) {
+  .container-fluid {
+    padding: 0 10px;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  .signup-main {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .form-sign select {
+    width: 100%;
+  }
+  .form-sign input {
+    width: 100%;
+  }
+}
