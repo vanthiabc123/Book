@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/register.css" />
+  </head>
+  <body>
+    <header><%- include('../views/header.ejs') %></header>
+    <main>
+      <section class="signup container">
+        <div class="signup-main">
+          <h3 class="headding">Đăng Ký</h3>
+          <form class="form-sign" method="POST">
+            <div class="text-field">
+              <label for="username">Tên Tài Khoản</label>
+              <input
+                name="username"
+                autocomplete="off"
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Nhập Tên Tài Khoản"
+              />
+            </div>
+            <div class="text-field">
+              <label for="email">Email</label>
+              <input
+                name="email"
+                autocomplete="off"
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Nhập email"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="text-field">
+              <label for="password">Mật Khẩu</label>
+              <input
+                name="password"
+                autocomplete="off"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Nhập Mật Khẩu"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="text-field">
+              <label for="rpassword">Nhập Lại Mật Khẩu</label>
+              <input
+                name="rpassword"
+                autocomplete="off"
+                type="password"
+                id="rpassword"
+                placeholder="Nhập Lại Mật Khẩu"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="text-field">
+              <label for="birthday">Ngày Sinh</label>
+              <input
+                name="birthday"
+                autocomplete="off"
+                type="date"
+                id="birthday"
+                name="birthday"
+                placeholder="Nhập Ngày Sinh"
+              />
+              <span class="error"></span>
+            </div>
+            <div class="text-field">
+              <label>Ảnh Đại Diện</label>
+              <input type="file" name="avatar" />
+              <span class="error"></span>
+            </div>
+            <label for="gender">Giới Tính</label>
+            <select name="gender" id="">
+              <option value="1">Nam</option>
+              <option value="0">Nữ</option>
+            </select>
+            <button type="submit">Đăng Ký</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <script src="../../js/main.js"></script>
+  </body>
+</html>

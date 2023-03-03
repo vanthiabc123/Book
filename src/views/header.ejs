@@ -1,0 +1,43 @@
+<div class="navbar">
+  <a href="#" class="logo"> NEWS </a>
+  <ul class="menu">
+    <li class="menu-item">
+      <a href="/" class="menu-link">Trang Chủ</a>
+    </li>
+    <li class="menu-item">
+      <a href="#" class="menu-link"
+        >Tin Tức <i class="fa fa-solid fa-sort-down"></i
+      ></a>
+      <ul>
+        <li>
+          <a href="?url=postFeatured.php">Nổi Bật</a>
+        </li>
+        <li>
+          <a href="/">sad</a>
+        </li>
+        <li>
+          <a href="/">sad</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <div class="account">
+    <% if (locals.user) { %>
+    <div class="account-img">
+      <img src="https://source.unsplash.com/random" />
+      <ul>
+        <li>
+          <a href="#">Thông tin cá nhân</a>
+        </li>
+        <li>
+          <a href="/logout">Đăng Xuất</a>
+        </li>
+      </ul>
+    </div>
+    <% } else { %>
+    <a class="btn btn-account" href="/login">
+      <i class="fa fa-solid fa-user"></i>
+    </a>
+    <% } %>
+  </div>
+</div>
