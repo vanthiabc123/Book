@@ -1,7 +1,7 @@
 // Imports
 const express = require("express");
 const app = express();
-const port = 5000;
+const port = 5001;
 require("dotenv").config();
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -9,6 +9,7 @@ const flash = require("connect-flash");
 const registerRouter = require("./src/routes/registerRouter");
 const loginRouter = require("./src/routes/loginRouter");
 const homePageRouter = require("./src/routes/homePageRouter");
+const postDetailsRouter = require("./src/routes/postDetailsRouter");
 
 // conect DB
 // Connection URL. This is where your mongodb server is running.
@@ -57,4 +58,5 @@ app.set("view engine", "ejs");
 app.use("/", homePageRouter);
 app.use("/", registerRouter);
 app.use("/", loginRouter);
+app.use("/", postDetailsRouter);
 app.listen(port, () => console.info(`App listening on port ${port}`));
