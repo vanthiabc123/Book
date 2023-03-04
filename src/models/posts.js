@@ -14,11 +14,12 @@ const postSchema = new Schema({
     trim: true,
     minlength: 3,
   },
-  category: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+  categoryId: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Category",
+    },
+  ],
   image: {
     type: String,
     required: false,
