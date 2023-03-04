@@ -4,16 +4,15 @@ const commentSchema = new Schema({
   userId: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Users",
     },
   ],
   postId: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Post",
+      ref: "Posts",
     },
   ],
-
   content: {
     type: String,
     required: true,
@@ -25,4 +24,4 @@ const commentSchema = new Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model("Comment", commentSchema);
+module.exports = mongoose.model("Comments", commentSchema);
