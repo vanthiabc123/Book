@@ -18,107 +18,56 @@
     <header><%- include('../views/header.ejs') %></header>
     <div class="container">
       <h2 class="heading">Bài Viết Nổi Bật</h2>
+      <% postFeature.forEach((post, index) => { %> <% if (index === 0) { %>
       <div class="post-feature">
         <a href="#" class="post-feature-media post-media">
-          <img
-            src="https://source.unsplash.com/random"
-            alt=""
-            class="post-feature-image"
-          />
+          <img src="<%= post.image %>" alt="" class="post-feature-image" />
         </a>
         <div class="post-feature-info">
-          <a href="#" class="post-category">asdsad</a>
+          <a href="#" class="post-category"><%= post.category %></a>
           <h2>
-            <a href="#" class="post-feature-title post-title">asdsad</a>
+            <a href="#" class="post-feature-title post-title"
+              ><%= post.title %></a
+            >
           </h2>
-          <div class="post-desc">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-            nemo officiis sit iste autem ea, illum provident quod neque amet
-            molestias et quia atque perspiciatis, laboriosam hic similique
-            ratione illo.
-          </div>
+          <div class="post-desc"><%= post.contents %></div>
           <a href="#" class="post-author">
             <div class="post-author-info">
-              <time class="post-author-time">Ngày Tạo: </time>
+              <time class="post-author-time"
+                >Ngày Tạo: <%= moment(post.createAt).format("Do MMMM, YYYY");
+                %></time
+              >
             </div>
           </a>
         </div>
       </div>
+      <% } %> <% }) %>
+
       <div class="post-list">
+        <% postFeature.slice(1, 4).forEach(function(post) { %>
         <div class="post-item">
           <a href="#" class="post-media">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              class="post-image"
-            />
+            <img src="<%= post.image %>" alt="" class="post-image" />
           </a>
-          <a href="#" class="post-category">asdsad</a>
+          <a href="#" class="post-category"><%= post.category %></a>
           <h3>
-            <a href="#" class="post-title">asdsad</a>
+            <a href="/postDetails/<%=post.id%>" class="post-title"
+              ><%= post.title %></a
+            >
           </h3>
-          <div class="post-desc">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis quam
-            odio sunt error laborum molestias, quos nisi a mollitia fugiat
-            repellat eaque asperiores quisquam aliquid sint aut, recusandae
-            reprehenderit exercitationem!
-          </div>
+          <div class="post-desc"><%= post.contents %></div>
           <a href="#" class="post-author">
             <div class="post-author-info">
-              <time class="post-author-time">Ngày Tạo: </time>
+              <time class="post-author-time"
+                >Ngày Tạo: <%= moment(post.createAt).format("Do MMMM, YYYY");
+                %></time
+              >
             </div>
           </a>
         </div>
-        <div class="post-item">
-          <a href="#" class="post-media">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              class="post-image"
-            />
-          </a>
-          <a href="#" class="post-category">asdsad</a>
-          <h3>
-            <a href="#" class="post-title">asdsad</a>
-          </h3>
-          <div class="post-desc">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis quam
-            odio sunt error laborum molestias, quos nisi a mollitia fugiat
-            repellat eaque asperiores quisquam aliquid sint aut, recusandae
-            reprehenderit exercitationem!
-          </div>
-          <a href="#" class="post-author">
-            <div class="post-author-info">
-              <time class="post-author-time">Ngày Tạo: </time>
-            </div>
-          </a>
-        </div>
-        <div class="post-item">
-          <a href="#" class="post-media">
-            <img
-              src="https://source.unsplash.com/random"
-              alt=""
-              class="post-image"
-            />
-          </a>
-          <a href="#" class="post-category">asdsad</a>
-          <h3>
-            <a href="#" class="post-title">asdsad</a>
-          </h3>
-          <div class="post-desc">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis quam
-            odio sunt error laborum molestias, quos nisi a mollitia fugiat
-            repellat eaque asperiores quisquam aliquid sint aut, recusandae
-            reprehenderit exercitationem!
-          </div>
-          <a href="#" class="post-author">
-            <div class="post-author-info">
-              <time class="post-author-time">Ngày Tạo: </time>
-            </div>
-          </a>
-        </div>
+        <% }); %>
       </div>
-      <%- include("../views/postNew.ejs") %>
+      <div><%- include("../views/postNew.ejs") %></div>
     </div>
     <footer></footer>
     <script src="../../js/main.js"></script>
