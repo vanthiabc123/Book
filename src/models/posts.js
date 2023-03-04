@@ -24,14 +24,13 @@ const postSchema = new Schema({
     type: String,
     required: false,
     trim: true,
-    minlength: 3,
   },
-  comments: {
-    type: Array,
-    required: false,
-    trim: true,
-    minlength: 3,
-  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comments",
+    },
+  ],
   feature: {
     type: Boolean,
     required: false,
@@ -43,4 +42,4 @@ const postSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model("Posts", postSchema);

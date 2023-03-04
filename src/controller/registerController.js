@@ -5,7 +5,6 @@ const showPage = (req, res) => {
 const register = async (req, res) => {
   try {
     const { username, password, email, gender, birthday } = req.body;
-    console.log(req.body);
     const user = await User.create({
       username,
       password,
