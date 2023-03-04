@@ -1,0 +1,81 @@
+
+<%- include('../header') %>
+
+
+<div class="content">
+  <div class="section-heading">
+    <h2>Thêm bài viết</h2>
+    <button><a href="?page=danhsachbaiviet">Quay lại</a></button>
+  </div>
+  <div>
+    <div class="form-editing">
+      <form method="POST" action="/admin/posts?_method=PUT"  enctype="multipart/form-data">
+        <div class="form-group">
+          <label class="form-label">Tên danh mục <span>*</span></label>
+          <select name="categoryId" class="form-input">
+            <option value="">[--Chọn tên danh mục--]</option>
+            <% categories.map(element => { %>
+            <option <%= element?._id == post?.categoryId ? 'selected' : '' %> value="<%= element._id %>"><%= element.name %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group spacing">
+          <span class="form-label">&nbsp;</span>
+          <div class="error-msg flex-3"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tên bài viết <span>*</span></label>
+          <input class="form-input" name="title" value="<%= post?.title %>" type="text" placeholder="Tên bài viết..." />
+        </div>
+        <div class="form-group spacing">
+          <span class="form-label">&nbsp;</span>
+          <div class="error-msg flex-3"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mô tả bài viết <span>*</span></label>
+          <div id="editor-wrap">
+            <textarea name="content" id="editor"><%= post?.content %></textarea>
+          </div>
+        </div>
+        <div class="form-group spacing">
+          <span class="form-label">&nbsp;</span>
+          <div class="error-msg flex-3"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Ảnh bài viết <span>*</span></label>
+          <input class="form-input" type="file" name="file">
+        </div>
+        <div class="form-group spacing">
+          <span class="form-label">&nbsp;</span>
+          <div class="error-msg flex-3"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nổi bật <span>*</span></label>
+          <select name="feature" class="form-input">
+            <option value="">[--Chọn--]</option>
+            <option <%= post?.feature == true ? 'selected' : ''  %> value="1">yes</option>
+            <option <%= post?.feature == false ? 'selected' : ''  %> value="0">no</option>
+          </select>
+        </div>
+        <div class="form-group spacing">
+          <span class="form-label">&nbsp;</span>
+          <div class="error-msg flex-3"></div>
+        </div>
+        <div class="form-group">
+          <span class="form-label">&nbsp;</span>
+          <button class="flex-3 submit-button">
+            Thêm
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+<script>
+  // Enable all default text formats:
+  CKEDITOR.replace('editor');
+</script>
+</body>
+
+</html>

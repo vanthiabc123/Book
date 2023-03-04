@@ -1,0 +1,44 @@
+<%- include('../header') %>
+
+<div class="content">
+ 
+  <div class="section-heading">
+    <h2>Danh sách danh mục</h2>
+
+    <button><a href="categories/new">Thêm danh mục</a></button>
+  </div>
+  <div class="data-listtings">
+    <table>
+
+      <tr>
+        <th>#</th>
+
+        <th>Danh mục bài viết</th>
+        <th colspan="2">Thao tác</th>
+      </tr>
+      
+      <% categories.map((element,index) => { index= index + 1 %>
+        <tr>
+          <td><%= index %></td>
+          <td><%= element.name %></td>
+          <td>
+            <button type="button" class="btn edit-btn">
+              <a href="/admin/categories/edit/<%= element._id %>"> <i class="fa-regular fa-pen-to-square"></i></a>
+            </button>
+            <form  method="post" action="/admin/categories?_method=DELETE">
+              <input type="hidden" name="id" value="<%= element._id %>">
+              <button onclick="return confirm('Bạn muốn xóa danh mục này')" class="btn delete-btn">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    
+    </table>
+  </div>
+</div>
+</main>
+</body>
+
+</html>

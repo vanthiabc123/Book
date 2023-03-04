@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
@@ -8,7 +8,7 @@ const postSchema = new Schema({
     trim: true,
     minlength: 3,
   },
-  contents: {
+  content: {
     type: String,
     required: true,
     trim: true,
@@ -17,7 +17,7 @@ const postSchema = new Schema({
   categoryId: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Category",
+      ref: 'Categories',
     },
   ],
   image: {
@@ -43,4 +43,4 @@ const postSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model('Posts', postSchema);
