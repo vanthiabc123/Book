@@ -1,0 +1,39 @@
+
+
+
+
+<%- include('../header') %>
+
+<div class="content">
+  <div class="section-heading">
+    <h2>Sửa danh mục</h2>
+    <button><a href="?page=danhsachdanhmuc">Quay lại</a></button>
+  </div>
+  <div>
+    <div class="form-editing">
+      <form method="POST" action="/admin/categories?_method=POST">
+        <div class="form-group">
+          <label class="form-label">Tên danh mục <span>*</span></label>
+          <input class="form-input" value="<%= category?.name %>" name="name" type="text" placeholder="Tên danh mục..." />
+        </div>
+        <div class="form-group spacing">
+          <span class="form-label">&nbsp;</span>
+          <div class="error-msg flex-3"><?= $error ?? "" ?></div>
+        </div>
+        <div class="form-group">
+          <span class="form-label">&nbsp;</span>
+          <button class="flex-3 submit-button">
+            Thêm
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</main>
+<script>
+  CKEDITOR.replace("editor");
+</script>
+</body>
+
+</html>

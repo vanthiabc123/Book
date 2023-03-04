@@ -1,0 +1,34 @@
+
+<%- include('../header') %>
+
+<div class="content">
+    <div class="section-heading">
+        <h2>Sửa danh mục nek</h2>
+        <button><a href="?page=danhsachdanhmuc">Quay lại</a></button>
+    </div>
+    <div>
+        <div class="form-editing">
+            <form method="POST" action="/admin/categories?_method=PUT">
+                <div class="form-group">
+                    <label class="form-label">Tên danh mục <span>*</span></label>
+                    <input value="<%= category.name ?? "" %>" class="form-input" name="name" type="text" placeholder="Tên danh mục..." />
+                    <input value="<%= category.id ?? "" %>" class="form-input" name="id" type="hidden" placeholder="Tên danh mục..." />
+                </div>
+                <div class="form-group spacing">
+                    <span class="form-label">&nbsp;</span>
+                    <div class="error-msg flex-3"><?= $error ?? "" ?></div>
+                </div>
+                <div class="form-group">
+                    <span class="form-label">&nbsp;</span>
+                    <button class="flex-3 submit-button">
+                        Thêm
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</main>
+</body>
+
+</html>
