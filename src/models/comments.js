@@ -13,7 +13,6 @@ const commentSchema = new Schema({
       ref: 'Posts',
     },
   ],
-
   content: {
     type: String,
     required: true,
@@ -25,4 +24,4 @@ const commentSchema = new Schema({
     default: Date.now,
   },
 });
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = mongoose.model("Comments", commentSchema);

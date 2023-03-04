@@ -27,11 +27,6 @@ const userSchema = new Schema({
     trim: true,
     minlength: 3,
   },
-  posts: {
-    type: Array,
-    trim: true,
-    minlength: 3,
-  },
   createAt: {
     type: Date,
     default: Date.now,
