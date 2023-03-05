@@ -3,12 +3,14 @@
   <div class="post-list">
     <% posts.forEach(function(post) { %>
     <div class="post-item">
-      <a href="#" class="post-media">
+      <a href="/postDetails/<%= post.id %>" class="post-media">
         <img src="<%= post.image %>" alt="" class="post-image" />
       </a>
       <a href="#" class="post-category"><%= post.category %></a>
       <h3>
-        <a href="#" class="post-title"><%= post.title %></a>
+        <a href="/postDetails/<%= post.id %>" class="post-title"
+          ><%= post.title %></a
+        >
       </h3>
       <div class="post-desc"><%= post.contents %></div>
       <a href="#" class="post-author">
