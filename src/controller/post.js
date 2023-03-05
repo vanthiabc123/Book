@@ -6,13 +6,12 @@ const url = require('url');
 // form
 const newForm = async (req, res) => {
   try {
-    // categoryId;
+    console.log(new Post());
     const categories = await Category.find({}).select('_id name');
-    console.log(categories);
     res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
       categories,
-      title: 'Thêm bài viết',
-      // post : new Post()
+      title: 'thêm danh mục',
+      post: new Post(),
     });
   } catch (error) {
     console.log(error);
@@ -24,7 +23,7 @@ const editForm = async (req, res) => {
     console.log(req.params.id);
     const category = await Category.findById(req.params.id);
     res.render(path.join(__dirname, '..', 'views', 'admin', 'categories', 'edit'), {
-      title: 'Sử danh mục',
+      title: 'Sửa danh mục',
       category: category,
     });
   } catch (error) {
@@ -32,7 +31,6 @@ const editForm = async (req, res) => {
     res.redirect('/admin/categories');
   }
 };
-
 
 const remove = async (req, res) => {
   try {
@@ -44,23 +42,20 @@ const remove = async (req, res) => {
 };
 
 const create = async (req, res, next) => {
-  console.log(req.body);
   const categories = await Category.find({}).select('_id name');
-
   const newPost = {
     categoryId: req.body?.categoryId,
     title: req.body?.title,
     content: req.body?.content,
     feature: req.body?.feature == '1' ? true : false,
-    image: req?.file,
+    image: req?.file.path,
   };
   const post = new Post(newPost);
   try {
     await post.save();
     res.redirect('/admin/posts');
   } catch (error) {
-    console.log(error);
-    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
+s    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
       title: 'posts',
       post: newPost,
       categories,
