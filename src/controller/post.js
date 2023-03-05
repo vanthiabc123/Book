@@ -5,10 +5,8 @@ const url = require('url');
 const fileUploader = require('../middlewares/cloudinary');
 const cloudinary = require('cloudinary').v2;
 
-// form
 const newForm = async (req, res) => {
   try {
-    // categoryId;
     const categories = await Category.find({}).select('_id name');
 
     console.log(new Post());
@@ -39,7 +37,12 @@ const editForm = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
-    await Post.findByIdAndDelete(req.body.id);
+    const post = await Post.findByIdAndDelete(req.body.id, { new: true });
+
+    // delete image cloudinary
+    await cloudinary.uploader.destroy(post.filename, (err, res) => {
+      console.log(res);
+    });
     res.redirect('/admin/posts');
   } catch (error) {
     res.redirect('/admin/posts');
@@ -55,12 +58,14 @@ const getAllCategory = async () => {
 };
 
 const create = async (req, res, next) => {
+  console.log(req.file);
   const newPost = {
     categoryId: req.body?.categoryId,
     title: req.body?.title,
     content: req.body?.content,
     feature: req.body?.feature == '1' ? true : false,
     image: req.file?.path || '',
+    filename: req.file?.filename || '',
   };
   try {
     const post = new Post(newPost);
@@ -77,24 +82,24 @@ const create = async (req, res, next) => {
 };
 
 const edit = async (req, res, next) => {
-  // let path = undefined;
-  // if (req?.file) {
-  //   path = req.file.path;
-  //   await cloudinary.uploader.destroy(path, (err, res) => {
-  //     console.log(res);
-  //   });
-  // } else {
-  //   path = req.body.path;
-  // }
-
-  // const categories = await Category.find().select('_id name');
   const newPost = {
     categoryId: req.body?.categoryId,
     title: req.body?.title,
     content: req.body?.content,
     feature: req.body?.feature == '1' ? true : false,
-    image: req.file?.path || '',
   };
+
+  // nếu mà nó upp file mới thì mình xóa trên clound
+  if (req?.file) {
+    await cloudinary.uploader.destroy(req.body.filename, (err, res) => {
+      console.log(res);
+    });
+    newPost.image = req.file.path;
+    newPost.filename = req.file.filename;
+  } else {
+    newPost.image = req.body.path;
+    newPost.filename = req.body.filename;
+  }
 
   try {
     await Post.findByIdAndUpdate(req.body.id, newPost);

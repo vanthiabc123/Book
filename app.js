@@ -69,10 +69,11 @@ app.use('/', registerRouter);
 app.use('/', loginRouter);
 app.use('/', postDetailsRouter);
 
-// app.use((req, res, next) => {
-//   if (req.session.user) next();
-// });
-// admin
+app.use((req, res, next) => {
+  if (req?.session.user?.username === 'admin') return next();
+  res.status(403).json({ message: 'Unauthorized' });
+});
+
 app.use('/admin/categories', require('./src/routes/category'));
 app.use('/admin/posts', require('./src/routes/post'));
 

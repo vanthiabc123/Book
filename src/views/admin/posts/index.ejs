@@ -10,12 +10,12 @@
         <button><a href="/admin/posts/new">Thêm bài viết</a></button>
     </div>
     <div class="filter_posts">
-        <form action="search" class="post-form" method="GET">
-            <input  class="" name="title" type="text" placeholder="Tên bài viết..." />
-            <select name="categoryId">
+        <form action="?search" class="post-form" method="GET">
+            <input class="" value="<%= searchOptions?.title ?? '' %>" name="title" type="text" placeholder="Tên bài viết..." />
+            <!-- <select name="categoryId">
                 <option value="" >[--Chọn tên danh mục--]</option>
-            </select>
-            <button type="submit" name="filter">Lọc</button>
+            </select> -->
+            <button type="submit" >Lọc</button>
         </form>
     </div>
     <div class="data-listtings">
