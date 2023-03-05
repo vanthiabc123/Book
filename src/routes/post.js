@@ -8,13 +8,14 @@ const fileUploader = require('../middlewares/cloudinary');
 
 router.get('/', async (req, res) => {
   try {
-    const posts = await Post.find({}).select('_id title categoryId image createAt');
-    const categories = await Category.find({}).select('_id name');
+    const posts = await Post.find({}).populate({
+      path: 'categoryId',
+      select: 'name',
+    });
 
     res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'index'), {
       title: 'index',
       posts,
-      categories,
     });
   } catch (error) {
     console.log(error);
@@ -25,7 +26,7 @@ router.get('/', async (req, res) => {
 router.get('/new', controllers.newForm);
 
 router.post('/', fileUploader.single('file'), controllers.create);
-router.put('/', controllers.edit);
+router.put('/',fileUploader.single('file'), controllers.edit);
 
 router.delete('/', controllers.remove);
 router.get('/edit/:id', controllers.editForm);

@@ -31,7 +31,7 @@ mongoose.connection.once('open', () => {
   console.log('connection open');
 });
 
-// Middleware 
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(

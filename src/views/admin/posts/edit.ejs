@@ -1,21 +1,22 @@
-
 <%- include('../header') %>
-
 
 <div class="content">
   <div class="section-heading">
     <h2>Thêm bài viết</h2>
-    <button><a href="?page=danhsachbaiviet">Quay lại</a></button>
+    <button><a href="/admin/posts">Quay lại</a></button>
   </div>
   <div>
     <div class="form-editing">
-      <form method="POST" action="/admin/posts?_method=POST"  enctype="multipart/form-data">
+      <form method="POST" action="/admin/posts?_method=PUT"  enctype="multipart/form-data">
         <div class="form-group">
+      <input value="<%= post._id ?? "" %>" class="form-input" name="id" type="hidden" placeholder="Tên danh mục..." />
+
           <label class="form-label">Tên danh mục <span>*</span></label>
           <select name="categoryId" class="form-input">
             <option value="">[--Chọn tên danh mục--]</option>
             <% categories.map(element => { %>
-            <option <%= element?._id == post?.categoryId ? 'selected' : '' %> value="<%= element._id %>"><%= element.name %></option>
+            <option <%= element?._id === post?.categoryId ? 'selected' : '' %> 
+              value="<%= element?._id %>"><%= element.name %></option>
             <% }) %>
           </select>
         </div>
@@ -43,6 +44,7 @@
         </div>
         <div class="form-group">
           <label class="form-label">Ảnh bài viết <span>*</span></label>
+          <input type="hidden" value="<%= post.image %>"  name="path">
           <input class="form-input" type="file" name="file">
         </div>
         <div class="form-group spacing">
