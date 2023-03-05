@@ -6,6 +6,7 @@ const url = require("url");
 // form
 const newForm = async (req, res) => {
   try {
+
     // categoryId;
     const categories = await Category.find({}).select("_id name");
     console.log(categories);
@@ -17,6 +18,15 @@ const newForm = async (req, res) => {
         post: new Post(),
       }
     );
+
+    console.log(new Post());
+    const categories = await Category.find({}).select('_id name');
+    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
+      categories,
+      title: 'thêm danh mục',
+      post: new Post(),
+    });
+
   } catch (error) {
     console.log(error);
   }
@@ -26,6 +36,7 @@ const editForm = async (req, res) => {
   try {
     console.log(req.params.id);
     const category = await Category.findById(req.params.id);
+
     res.render(
       path.join(__dirname, "..", "views", "admin", "categories", "edit"),
       {
@@ -33,6 +44,12 @@ const editForm = async (req, res) => {
         category: category,
       }
     );
+
+    res.render(path.join(__dirname, '..', 'views', 'admin', 'categories', 'edit'), {
+      title: 'Sửa danh mục',
+      category: category,
+    });
+
   } catch (error) {
     console.log("loi tai editformed", error);
     res.redirect("/admin/categories");
@@ -49,8 +66,12 @@ const remove = async (req, res) => {
 };
 
 const create = async (req, res, next) => {
+
   console.log(req.body);
   const categories = await Category.find({}).select("_id name");
+
+
+  const categories = await Category.find({}).select('_id name');
 
   const newPost = {
     categoryId: req.body?.categoryId,
@@ -73,6 +94,13 @@ const create = async (req, res, next) => {
         categories,
       }
     );
+
+    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
+      title: 'posts',
+      post: newPost,
+      categories,
+    });
+
   }
 };
 
