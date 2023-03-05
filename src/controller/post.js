@@ -55,7 +55,7 @@ const create = async (req, res, next) => {
     await post.save();
     res.redirect('/admin/posts');
   } catch (error) {
-s    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
+    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
       title: 'posts',
       post: newPost,
       categories,
