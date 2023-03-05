@@ -25,10 +25,14 @@ const postSchema = new Schema({
     required: false,
     trim: true,
   },
+  filename: {
+    type: String,
+    trim: true,
+  },
   comments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Comments",
+      ref: 'Comments',
     },
   ],
   feature: {
@@ -42,4 +46,4 @@ const postSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model("Posts", postSchema);
+module.exports = mongoose.model('Posts', postSchema);
