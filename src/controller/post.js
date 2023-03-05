@@ -8,27 +8,15 @@ const cloudinary = require('cloudinary').v2;
 // form
 const newForm = async (req, res) => {
   try {
-
     // categoryId;
-    const categories = await Category.find({}).select("_id name");
-    console.log(categories);
-    res.render(
-      path.join(__dirname, "..", "views", "admin", "posts", "create"),
-      {
-        categories,
-        title: "Thêm bài viết",
-        post: new Post(),
-      }
-    );
+    const categories = await Category.find({}).select('_id name');
 
     console.log(new Post());
-    const categories = await Category.find({}).select('_id name');
     res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
       categories,
       title: 'thêm danh mục',
       post: new Post(),
     });
-
   } catch (error) {
     console.log(error);
   }
@@ -36,25 +24,16 @@ const newForm = async (req, res) => {
 
 const editForm = async (req, res) => {
   try {
-    console.log(req.params.id);
-    const category = await Category.findById(req.params.id);
-
-    res.render(
-      path.join(__dirname, "..", "views", "admin", "categories", "edit"),
-      {
-        title: "Sử danh mục",
-        category: category,
-      }
-    );
-
-    res.render(path.join(__dirname, '..', 'views', 'admin', 'categories', 'edit'), {
-      title: 'Sửa danh mục',
-      category: category,
+    const post = await Post.findById(req.params.id);
+    const categories = await Category.find({});
+    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'edit'), {
+      title: 'Sửa bài viết',
+      post,
+      categories,
     });
-
   } catch (error) {
-    console.log("loi tai editformed", error);
-    res.redirect("/admin/categories");
+    console.log('loi tai editformed', error);
+    res.redirect('/admin/categories');
   }
 };
 
@@ -86,7 +65,7 @@ const create = async (req, res, next) => {
   try {
     const post = new Post(newPost);
     await post.save();
-    res.redirect("/admin/posts");
+    res.redirect('/admin/posts');
   } catch (error) {
     console.log(error);
     res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'create'), {
