@@ -37,7 +37,11 @@
         </div>
       </div>
       <div class="post-details-content">
-        <div class="post-content-item"><%= post.contents %></div>
+        <div class="post-content-item">
+          <!-- decode content -->
+          <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes:
+          {} }) %>
+        </div>
       </div>
       <%- include("../views/postComments.ejs") %>
     </div>

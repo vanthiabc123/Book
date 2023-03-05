@@ -35,7 +35,10 @@
               ><%= post.title %></a
             >
           </h2>
-          <div class="post-desc"><%= post.contents %></div>
+          <div class="post-desc">
+            <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes:
+            {} }) %>
+          </div>
           <a href="#" class="post-author">
             <div class="post-author-info">
               <time class="post-author-time"
@@ -60,7 +63,10 @@
               ><%= post.title %></a
             >
           </h3>
-          <div class="post-desc"><%= post.contents %></div>
+          <div class="post-desc">
+            <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes:
+            {} }) %>
+          </div>
           <a href="#" class="post-author">
             <div class="post-author-info">
               <time class="post-author-time"

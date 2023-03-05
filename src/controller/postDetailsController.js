@@ -2,6 +2,8 @@ const Post = require("../models/posts");
 const User = require("../models/user");
 const moment = require("moment");
 const Comment = require("../models/comments");
+const sanitizeHtml = require("sanitize-html");
+
 const showPage = async (req, res) => {
   const post = await Post.findById(req.params.id);
   const user = req.session.user;
@@ -12,6 +14,7 @@ const showPage = async (req, res) => {
     moment,
     comments,
     user,
+    sanitizeHtml,
   });
 };
 const addComments = async (req, res) => {
