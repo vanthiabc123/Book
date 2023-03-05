@@ -7,7 +7,7 @@
     <div class="section-heading">
         <h2>Danh sách bài viết</h2>
 
-        <button><a href="?page=thembaiviet">Thêm bài viết</a></button>
+        <button><a href="/admin/posts/new">Thêm bài viết</a></button>
     </div>
     <div class="filter_posts">
         <form action="search" class="post-form" method="GET">
@@ -33,15 +33,15 @@
                 <tr>
                     <td><?= index ?></td>
                     <td><img src="<%= element?.image %>"></td>
-                    <td><%= element?.categoryId %></td>
+                    <td><%= element?.categoryId[0].name %></td>
                     <td><%= element?.title %></td>
                     <td><%= element.createAt?.toISOString().split('T')[0] %></td>
                     <td>
                         <button type="button" class="btn edit-btn">
-                            <a href="?page=suabaiviet&id="> <i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="/admin/posts/edit/<%= element._id %>"> <i class="fa-regular fa-pen-to-square"></i></a>
                         </button>
-                        <form action="?page=xoabaiviet" method="post">
-                            <input type="hidden" name="id" value="">
+                        <form action="/admin/posts?_method=DELETE" method="post">
+                            <input type="hidden" name="id" value="<%= element._id %>">
                             <button onclick="return confirm('Bạn có chắc xóa bài viết này')" class="btn delete-btn">
                                 <i class="fa-regular fa-trash-can"></i>
                             </button>
