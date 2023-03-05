@@ -32,7 +32,12 @@
                 name="email"
                 placeholder="Nhập Tên Tài Khoản"
               />
-              <span class="error">ádsad</span>
+              <!-- nếu lỗi thông báo lỗi -->
+              <span class="error">
+                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                <% errors.forEach(function(error) { %> <%= error.msg %> <% });
+                %> <% } %>
+              </span>
             </div>
             <div class="text-field">
               <label for="password">Mật Khẩu</label>
@@ -44,7 +49,11 @@
                 name="password"
                 placeholder="Nhập Mật Khẩu"
               />
-              <span class="error">ádsa</span>
+              <span class="error">
+                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+                <% errors.forEach(function(error) { %> <%= error.msg %> <% });
+                %> <% } %>
+              </span>
             </div>
             <button id="login" type="submit">Đăng Nhập</button>
           </form>

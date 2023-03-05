@@ -20,17 +20,25 @@
       <h2 class="heading">Bài Viết Nổi Bật</h2>
       <% postFeature.forEach((post, index) => { %> <% if (index === 0) { %>
       <div class="post-feature">
-        <a href="#" class="post-feature-media post-media">
+        <a
+          href="/postDetails/<%= post.id %>"
+          class="post-feature-media post-media"
+        >
           <img src="<%= post.image %>" alt="" class="post-feature-image" />
         </a>
         <div class="post-feature-info">
           <a href="#" class="post-category"><%= post.category %></a>
           <h2>
-            <a href="#" class="post-feature-title post-title"
+            <a
+              href="/postDetails/<%= post.id %>"
+              class="post-feature-title post-title"
               ><%= post.title %></a
             >
           </h2>
-          <div class="post-desc"><%= post.contents %></div>
+          <div class="post-desc">
+            <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes:
+            {} }) %>
+          </div>
           <a href="#" class="post-author">
             <div class="post-author-info">
               <time class="post-author-time"
@@ -55,7 +63,10 @@
               ><%= post.title %></a
             >
           </h3>
-          <div class="post-desc"><%= post.contents %></div>
+          <div class="post-desc">
+            <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes:
+            {} }) %>
+          </div>
           <a href="#" class="post-author">
             <div class="post-author-info">
               <time class="post-author-time"
