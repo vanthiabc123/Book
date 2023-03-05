@@ -17,17 +17,17 @@ const showPage = async (req, res) => {
 const addComments = async (req, res) => {
   const post = await Post.findById(req.params.id);
   const { content } = req.body;
-  const comment = await Comment.create({
-    content,
-    postId: post._id,
-    userId: req.session.user._id,
-  });
-  if (!Array.isArray(post.comments)) {
-    post.comments = [];
+  try {
+    const comment = new Comment({
+      content,
+      userId: req.session.user._id,
+      postId: post._id,
+    });
+    await comment.save();
+    res.redirect(`/postDetails/${req.params.id}`);
+  } catch (error) {
+    res.redirect(`/postDetails/${req.params.id}`);
   }
-  post.comments.push(comment._id);
-  await post.save();
-  res.redirect(`/postDetails/${post._id}`);
 };
 const deleteComments = async (req, res) => {
   // check if the user is the owner of the comment
