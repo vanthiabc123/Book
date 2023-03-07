@@ -29,9 +29,9 @@
                 <th>Ngày tạo</th>
                 <th colspan="2">Thao tác</th>
             </tr>
-                <% posts.map((element,index) => { index = index +1 %> 
+                <% posts.map((element,index) => { index = index + 1 %> 
                 <tr>
-                    <td><?= index ?></td>
+                    <td><%= index %></td>
                     <td><img src="<%= element?.image %>"></td>
                     <td><%= element?.categoryId[0].name %></td>
                     <td><%= element?.title %></td>

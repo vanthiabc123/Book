@@ -5,6 +5,33 @@ const url = require('url');
 const fileUploader = require('../middlewares/cloudinary');
 const cloudinary = require('cloudinary').v2;
 
+const list = async (req, res) => {
+  try {
+    let searchOptions = {};
+    if (req.query.title != null && req.query.title !== '') {
+      searchOptions.title = new RegExp(req.query.title, 'i');
+    }
+
+    const posts = await Post.find(searchOptions)
+      .populate({
+        path: 'categoryId',
+        select: 'name',
+      })
+      .select('-content');
+
+    console.log(posts);
+
+    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'index'), {
+      title: 'index',
+      posts,
+      searchOptions: req.query,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(404);
+  }
+};
+
 const newForm = async (req, res) => {
   try {
     const categories = await Category.find({}).select('_id name');
@@ -119,4 +146,5 @@ module.exports = {
   editForm,
   edit,
   remove,
+  list,
 };
