@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
@@ -14,12 +14,10 @@ const postSchema = new Schema({
     trim: true,
     minlength: 3,
   },
-  categoryId: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Categories',
-    },
-  ],
+  categoryId: {
+    type: Schema.Types.ObjectId,
+    ref: "Categories",
+  },
   image: {
     type: String,
     required: false,

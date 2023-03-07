@@ -5,7 +5,10 @@ const Comment = require("../models/comments");
 const sanitizeHtml = require("sanitize-html");
 
 const showPage = async (req, res) => {
-  const post = await Post.findById(req.params.id);
+  const post = await Post.findById(req.params.id).populate({
+    path: "categoryId",
+    select: "name",
+  });
   const user = req.session.user;
   const comments = await Comment.find({ postId: post._id }).populate("userId");
   res.render("postDetails", {
@@ -26,7 +29,11 @@ const addComments = async (req, res) => {
       userId: req.session.user._id,
       postId: post._id,
     });
+
     await comment.save();
+    await post.comments.push(comment);
+    await post.save();
+
     res.redirect(`/postDetails/${req.params.id}`);
   } catch (error) {
     res.redirect(`/postDetails/${req.params.id}`);
