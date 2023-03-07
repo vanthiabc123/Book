@@ -6,29 +6,7 @@ const Post = require('../models/posts');
 const Category = require('../models/category');
 const fileUploader = require('../middlewares/cloudinary');
 
-router.get('/', async (req, res) => {
-  try {
-    let searchOptions = {};
-    if (req.query.title != null && req.query.title !== '') {
-      searchOptions.title = new RegExp(req.query.title, 'i');
-    }
-
-    const posts = await Post.find(searchOptions).populate({
-      path: 'categoryId',
-      select: 'name',
-      searchOptions,
-    });
-
-    res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'index'), {
-      title: 'index',
-      posts,
-      searchOptions: req.query,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(404);
-  }
-});
+router.get('/',controllers.list);
 
 router.get('/new', controllers.newForm);
 
