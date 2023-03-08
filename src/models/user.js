@@ -47,6 +47,10 @@ userSchema.pre('save', async function (next) {
   }
 
   const salt = await bcrypt.genSalt();
+  // nếu mật khảu đã bâm thì ko cần bâm
+  if (!this.isModified('password')) {
+    return next();
+  }
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
