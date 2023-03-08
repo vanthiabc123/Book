@@ -1,8 +1,14 @@
 <main>
-  <section class="signup container">
-    <div class="signup-main">
-      <h3 class="headding">Đăng Ký</h3>
-      <form class="form-sign" method="POST">
+  <section class="container">
+    <div class="profile-main">
+      <h3 class="headding">Thông Tin Cá Nhân</h3>
+      <form
+        class="form-profile"
+        action=""
+        method="POST"
+        autocomplete="off"
+        enctype="multipart/form-data"
+      >
         <div class="text-field">
           <label for="username">Tên Tài Khoản</label>
           <input
@@ -10,9 +16,10 @@
             autocomplete="off"
             type="text"
             id="username"
-            name="username"
             placeholder="Nhập Tên Tài Khoản"
+            value="<%= user.username %>"
           />
+          <span class="error"></span>
         </div>
         <div class="text-field">
           <label for="email">Email</label>
@@ -21,8 +28,8 @@
             autocomplete="off"
             type="email"
             id="email"
-            name="email"
             placeholder="Nhập email"
+            value="<%= user.email  %>"
           />
           <span class="error"></span>
         </div>
@@ -33,19 +40,8 @@
             autocomplete="off"
             type="password"
             id="password"
-            name="password"
             placeholder="Nhập Mật Khẩu"
-          />
-          <span class="error"></span>
-        </div>
-        <div class="text-field">
-          <label for="rpassword">Nhập Lại Mật Khẩu</label>
-          <input
-            name="rpassword"
-            autocomplete="off"
-            type="password"
-            id="rpassword"
-            placeholder="Nhập Lại Mật Khẩu"
+            value="<%= user.password  %>"
           />
           <span class="error"></span>
         </div>
@@ -56,22 +52,17 @@
             autocomplete="off"
             type="date"
             id="birthday"
-            name="birthday"
             placeholder="Nhập Ngày Sinh"
+            value="<%= user.birthday  %>"
           />
           <span class="error"></span>
         </div>
         <div class="text-field">
-          <label>Ảnh Đại Diện</label>
-          <input type="file" name="avatar" />
-          <span class="error"></span>
+          <label for="avatar">Ảnh Đại Diện</label>
+          <input type="file" name="avatar" value="" />
+          <input type="hidden" name="cloneavatar" value="" />
         </div>
-        <label for="gender">Giới Tính</label>
-        <select name="gender" id="">
-          <option value="1">Nam</option>
-          <option value="0">Nữ</option>
-        </select>
-        <button type="submit">Đăng Ký</button>
+        <button type="submit">Cập Nhật</button>
       </form>
     </div>
   </section>
