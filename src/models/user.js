@@ -42,6 +42,10 @@ const userSchema = new Schema({
 });
 
 userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    next();
+  }
+
   const salt = await bcrypt.genSalt();
   // nếu mật khảu đã bâm thì ko cần bâm
   if (!this.isModified('password')) {
