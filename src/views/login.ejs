@@ -1,77 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="../../css/main.css" />
-    <link rel="stylesheet" href="../../css/login.css" />
-  </head>
-  <body>
-    <header><%- include('../views/header.ejs') %></header>
-    <main>
-      <section class="login container">
-        <div class="login-main">
-          <h3 class="headding">Đăng Nhập</h3>
-          <form class="form-sign" method="POST">
-            <div class="text-field">
-              <label for="email">Nhập email tài khoản</label>
-              <input
-                name="email"
-                autocomplete="off"
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Nhập Tên Tài Khoản"
-              />
-              <!-- nếu lỗi thông báo lỗi -->
-              <span class="error">
-                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
-                <% errors.forEach(function(error) { %> <%= error.msg %> <% });
-                %> <% } %>
-              </span>
-            </div>
-            <div class="text-field">
-              <label for="password">Mật Khẩu</label>
-              <input
-                name="password"
-                autocomplete="off"
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Nhập Mật Khẩu"
-              />
-              <span class="error">
-                <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
-                <% errors.forEach(function(error) { %> <%= error.msg %> <% });
-                %> <% } %>
-              </span>
-            </div>
-            <button id="login" type="submit">Đăng Nhập</button>
-          </form>
+<main>
+  <section class="login container">
+    <div class="login-main">
+      <h3 class="headding">Đăng Nhập</h3>
+      <form class="form-sign" method="POST">
+        <div class="text-field">
+          <label for="email">Nhập email tài khoản</label>
+          <input
+            name="email"
+            autocomplete="off"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Nhập Tên Tài Khoản"
+          />
+          <!-- nếu lỗi thông báo lỗi -->
+          <span class="error">
+            <% if (typeof errors !== 'undefined' && errors.length > 0) { %> <%
+            errors.forEach(function(error) { %> <%= error.msg %> <% }); %> <% }
+            %>
+          </span>
         </div>
-        <div class="login_main-right">
-          <h3 class="headding">Đăng Ký</h3>
-          <p class="signup-desc">
-            Nếu quý khách vẫn chưa có tài khoản trên shop của chúng tôi hãy thử
-            sử dụng tùy chọn này để đăng ký tài khoản mới.
-          </p>
-          <div>
-            <a href="./register">
-              <button type="submit">Đăng Ký</button>
-            </a>
-          </div>
+        <div class="text-field">
+          <label for="password">Mật Khẩu</label>
+          <input
+            name="password"
+            autocomplete="off"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Nhập Mật Khẩu"
+          />
+          <span class="error">
+            <% if (typeof errors !== 'undefined' && errors.length > 0) { %> <%
+            errors.forEach(function(error) { %> <%= error.msg %> <% }); %> <% }
+            %>
+          </span>
         </div>
-      </section>
-    </main>
-    <footer></footer>
-  </body>
-</html>
+        <button id="login" type="submit">Đăng Nhập</button>
+      </form>
+    </div>
+    <div class="login_main-right">
+      <h3 class="headding">Đăng Ký</h3>
+      <p class="signup-desc">
+        Nếu quý khách vẫn chưa có tài khoản trên shop của chúng tôi hãy thử sử
+        dụng tùy chọn này để đăng ký tài khoản mới.
+      </p>
+      <div>
+        <a href="./register">
+          <button type="submit">Đăng Ký</button>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>

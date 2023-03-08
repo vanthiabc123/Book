@@ -1,53 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="../../css/main.css" />
-  </head>
-  <body>
-    <header><%- include('../views/header.ejs') %></header>
-    <div class="container">
-      <h2 class="heading">Bài Viết Nổi Bật</h2>
-      <div class="post-list">
-        <% postFeature.forEach(function(post) { %>
-        <div class="post-item">
-          <a href="#" class="post-media">
-            <img src="<%= post.image %>" alt="" class="post-image" />
-          </a>
-          <a href="#" class="post-category"><%= post.categoryId.name %></a>
-          <h3>
-            <a href="/postDetails/<%=post.id%>" class="post-title"
-              ><%= post.title %></a
-            >
-          </h3>
-          <div class="post-desc">
-            <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes:
-            {} }) %>
-          </div>
-          <a href="#" class="post-author">
-            <div class="post-author-info">
-              <time class="post-author-time"
-                >Ngày Tạo: <%= moment(post.createAt).format("Do MMMM, YYYY");
-                %></time
-              >
-            </div>
-          </a>
-        </div>
-        <% }); %>
+<div class="container">
+  <h2 class="heading">Bài Viết Nổi Bật</h2>
+  <div class="post-list">
+    <% postFeature.forEach(function(post) { %>
+    <div class="post-item">
+      <a href="#" class="post-media">
+        <img src="<%= post.image %>" alt="" class="post-image" />
+      </a>
+      <a href="#" class="post-category"><%= post.categoryId.name %></a>
+      <h3>
+        <a href="/postDetails/<%=post.id%>" class="post-title"
+          ><%= post.title %></a
+        >
+      </h3>
+      <div class="post-desc">
+        <%= sanitizeHtml(post.content, { allowedTags: [], allowedAttributes: {}
+        }) %>
       </div>
-      <div><%- include("../views/postNew.ejs") %></div>
+      <a href="#" class="post-author">
+        <div class="post-author-info">
+          <time class="post-author-time"
+            >Ngày Tạo: <%= moment(post.createAt).format("Do MMMM, YYYY");
+            %></time
+          >
+        </div>
+      </a>
     </div>
-    <footer></footer>
-    <script src="../../js/main.js"></script>
-  </body>
-</html>
+    <% }); %>
+  </div>
+  <div><%- include("../views/postNew.ejs") %></div>
+</div>

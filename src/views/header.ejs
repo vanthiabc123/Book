@@ -10,12 +10,11 @@
         <li>
           <a href="?url=postFeatured.php">Nổi Bật</a>
         </li>
+        <% categories.forEach(function(category) { %>
         <li>
-          <a href="/"><%= locals.categories.title %></a>
+          <a href="/category/<%- category.id %>"> <%= category.name %> </a>
         </li>
-        <li>
-          <a href="/">sad</a>
-        </li>
+        <% }); %>
       </ul>
     </li>
   </ul>
@@ -25,7 +24,7 @@
       <img src="https://source.unsplash.com/random" />
       <ul>
         <li>
-          <a href="#">Thông tin cá nhân</a>
+          <a href="/profile/<%= user._id %>">Thông tin cá nhân</a>
         </li>
         <li>
           <a href="/logout">Đăng Xuất</a>
