@@ -64,6 +64,15 @@ app.use(express.static('public'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+app.use('*', (req, res, next) => {
+  res.locals.categories = {
+    id: 1,
+    title: 'tuan',
+  };
+
+  next();
+});
+
 app.use('/', homePageRouter);
 app.use('/', registerRouter);
 app.use('/', loginRouter);

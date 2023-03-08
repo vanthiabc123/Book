@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 const userSchema = new Schema({
   username: {
@@ -41,8 +41,12 @@ const userSchema = new Schema({
   },
 });
 
-userSchema.pre("save", async function (next) {
+userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt();
+  // nếu mật khảu đã bâm thì ko cần bâm
+  if (!this.isModified('password')) {
+    return next();
+  }
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
@@ -53,4 +57,4 @@ userSchema.methods.isValidPassword = async function (password) {
     throw error;
   }
 };
-module.exports = mongoose.model("Users", userSchema);
+module.exports = mongoose.model('Users', userSchema);

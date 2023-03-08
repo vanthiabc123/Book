@@ -12,6 +12,7 @@ const list = async (req, res) => {
       searchOptions.title = new RegExp(req.query.title, 'i');
     }
 
+    console.log(111);
     const posts = await Post.find(searchOptions)
       .populate({
         path: 'categoryId',
