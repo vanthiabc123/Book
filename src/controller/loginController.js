@@ -17,6 +17,7 @@ const login = async (req, res) => {
         res.redirect("/login");
       }
     } else {
+      console.log("User not found");
       res.redirect("/login");
     }
   } catch (error) {

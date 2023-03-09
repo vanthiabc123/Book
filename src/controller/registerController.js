@@ -11,9 +11,10 @@ const register = async (req, res) => {
       email,
       gender,
       birthday,
+      avatar: "",
     });
     req.session.user = user;
-    res.redirect("/login");
+    res.redirect("/");
   } catch (error) {
     console.log(error);
     res.redirect("/register");

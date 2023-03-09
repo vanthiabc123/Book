@@ -1,6 +1,6 @@
 
-
 <%- include('../header') %>
+<!-- không sử dụng layout -->
 
 
 <div class="content">
@@ -33,7 +33,7 @@
                 <tr>
                     <td><%= index %></td>
                     <td><img src="<%= element?.image %>"></td>
-                    <td><%= element?.categoryId[0].name %></td>
+                    <td><%= element?.categoryId.name %></td>
                     <td><%= element?.title %></td>
                     <td><%= element.createAt?.toISOString().split('T')[0] %></td>
                     <td>
