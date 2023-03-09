@@ -2,13 +2,7 @@
   <section class="container">
     <div class="profile-main">
       <h3 class="headding">Thông Tin Cá Nhân</h3>
-      <form
-        class="form-profile"
-        action=""
-        method="POST"
-        autocomplete="off"
-        enctype="multipart/form-data"
-      >
+      <form class="form-profile" method="POST" enctype="multipart/form-data">
         <div class="text-field">
           <label for="username">Tên Tài Khoản</label>
           <input
@@ -33,7 +27,7 @@
           />
           <span class="error"></span>
         </div>
-        <div class="text-field">
+        <!-- <div class="text-field">
           <label for="password">Mật Khẩu</label>
           <input
             name="password"
@@ -41,26 +35,24 @@
             type="password"
             id="password"
             placeholder="Nhập Mật Khẩu"
-            value="<%= user.password  %>"
+            value="false"
           />
           <span class="error"></span>
-        </div>
+        </div> -->
         <div class="text-field">
           <label for="birthday">Ngày Sinh</label>
           <input
             name="birthday"
-            autocomplete="off"
             type="date"
             id="birthday"
             placeholder="Nhập Ngày Sinh"
-            value="<%= user.birthday  %>"
+            value="<%= moment(user.birthday).format('YYYY-MM-DD'); %>"
           />
           <span class="error"></span>
         </div>
         <div class="text-field">
           <label for="avatar">Ảnh Đại Diện</label>
-          <input type="file" name="avatar" value="" />
-          <input type="hidden" name="cloneavatar" value="" />
+          <input type="file" name="avatar" />
         </div>
         <button type="submit">Cập Nhật</button>
       </form>

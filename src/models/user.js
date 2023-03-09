@@ -24,8 +24,6 @@ const userSchema = new Schema({
   avatar: {
     type: String,
     required: false,
-    trim: true,
-    minlength: 3,
   },
   createAt: {
     type: Date,
@@ -48,7 +46,11 @@ userSchema.pre('save', async function (next) {
 
   const salt = await bcrypt.genSalt();
   // nếu mật khảu đã bâm thì ko cần bâm
+<<<<<<< HEAD
+  if (!this.isModified("password")) {
+=======
   if (!this.isModified('password')) {
+>>>>>>> fbcd6c6b2537f39d903d44c060ed06c64559fa16
     return next();
   }
   this.password = await bcrypt.hash(this.password, salt);
