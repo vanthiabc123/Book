@@ -3,6 +3,9 @@ const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const port = 5001;
+
+const path = require("path");
+
 require("dotenv").config();
 const mongoose = require("mongoose");
 const session = require("express-session");
@@ -73,6 +76,14 @@ app.use(express.static("public"));
 // Set View's
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
+
+// app.use((req, res, next) => {
+//   if (req?.session.user?.username === 'admin') return next();
+//   res.status(403).json({ message: 'Unauthorized' });
+// });
+app.use("/admin/categories", require("./src/routes/category"));
+app.use("/admin/posts", require("./src/routes/post"));
+
 app.use(expressLayouts);
 app.set("layout", "./layouts/layout");
 
@@ -81,12 +92,5 @@ app.use("/", registerRouter);
 app.use("/", loginRouter);
 app.use("/", postDetailsRouter);
 app.use("/", profileRouter);
-
-app.use((req, res, next) => {
-  if (req?.session.user?.username === "admin") return next();
-  res.status(403).json({ message: "Unauthorized" });
-});
-app.use("/admin/categories", require("./src/routes/category"));
-app.use("/admin/posts", require("./src/routes/post"));
 
 app.listen(port, () => console.info(`App listening on port ${port}`));

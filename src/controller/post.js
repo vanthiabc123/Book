@@ -1,8 +1,8 @@
 const Category = require('../models/category');
 const Post = require('../models/posts');
 const path = require('path');
-const url = require('url');
-const fileUploader = require('../middlewares/cloudinary');
+// const url = require('url');
+// const fileUploader = require('../middlewares/cloudinary');
 const cloudinary = require('cloudinary').v2;
 
 const list = async (req, res) => {
@@ -12,6 +12,7 @@ const list = async (req, res) => {
       searchOptions.title = new RegExp(req.query.title, 'i');
     }
 
+    console.log(111);
     const posts = await Post.find(searchOptions)
       .populate({
         path: 'categoryId',
@@ -19,7 +20,7 @@ const list = async (req, res) => {
       })
       .select('-content');
 
-    console.log(posts);
+    // console.log(posts);
 
     res.render(path.join(__dirname, '..', 'views', 'admin', 'posts', 'index'), {
       title: 'index',
@@ -55,6 +56,7 @@ const editForm = async (req, res) => {
       title: 'Sửa bài viết',
       post,
       categories,
+      layout: false,
     });
   } catch (error) {
     console.log('loi tai editformed', error);
