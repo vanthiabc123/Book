@@ -1,7 +1,5 @@
 const User = require("../models/user");
 const moment = require("moment");
-const fileUploader = require("../middlewares/cloudinary");
-const cloudinary = require("cloudinary").v2;
 
 const showProfileUser = async (req, res) => {
   try {
@@ -16,14 +14,24 @@ const showProfileUser = async (req, res) => {
 const editProfileUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    const { username, email } = req.body;
+    const { username, email, password } = req.body;
     if ((username, email)) {
       user.username = username;
       user.email = email;
     }
-    const file = req.avatar.path;
-    const result = await cloudinary.uploader.upload(file);
-    user.avatar = result.secure_url;
+    const avatar = req.file?.path;
+    const filename = req.file?.filename;
+    if (avatar && filename) {
+      user.avatar = avatar;
+      user.filename = filename;
+    } else {
+      user.avatar = user.avatar;
+      user.filename = user.filename;
+    }
+    // kiem tra xem password o form co khac voi password trong db khong neu khac thi update password con khong thi khong lam gi ca
+    if (password !== user.password) {
+      user.password = password;
+    }
 
     await user.save();
     res.redirect("/profile/" + user._id);

@@ -27,7 +27,7 @@
           />
           <span class="error"></span>
         </div>
-        <!-- <div class="text-field">
+        <div class="text-field">
           <label for="password">Mật Khẩu</label>
           <input
             name="password"
@@ -35,10 +35,10 @@
             type="password"
             id="password"
             placeholder="Nhập Mật Khẩu"
-            value="false"
+            value="<%= user.password  %>"
           />
           <span class="error"></span>
-        </div> -->
+        </div>
         <div class="text-field">
           <label for="birthday">Ngày Sinh</label>
           <input
@@ -52,7 +52,7 @@
         </div>
         <div class="text-field">
           <label for="avatar">Ảnh Đại Diện</label>
-          <input type="file" name="avatar" />
+          <input type="file" name="file" />
         </div>
         <button type="submit">Cập Nhật</button>
       </form>
