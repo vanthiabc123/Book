@@ -19,10 +19,29 @@
 //   }
 // });
 
-const avatarUser = document.querySelector(".account-img");
-const accountMenu = document.querySelector(".account ul");
-avatarUser.addEventListener("click", function () {
-  accountMenu.classList.toggle("active");
+const avatarUser = document.querySelector('.account-img');
+const accountMenu = document.querySelector('.account ul');
+avatarUser.addEventListener('click', function () {
+  accountMenu.classList.toggle('active');
 });
+const commentList = document.querySelector('.post-comment__list');
 
-const commentList = document.querySelector(".post-comment__list");
+const form = document.querySelector('form');
+const input = form.querySelector(`textarea[name="content"]`);
+// const postComment = document.querySelector('.post-comment');
+(() => {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const response = await fetch(`/postDetails/${form.dataset.id}/addcomments`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application.json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ content: input.value }),
+    });
+    const data = await response.json();
+    console.log(data);
+  });
+})();

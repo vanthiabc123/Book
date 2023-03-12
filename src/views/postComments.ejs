@@ -2,8 +2,9 @@
   <div class="post-comment__heading">
     <h3>Bình Luận</h3>
   </div>
+
   <div class="post-comment__form">
-    <form method="POST" action="/postDetails/<%- post._id%>/addcomments">
+    <form data-id="<%-post._id%>">
       <div class="form-group">
         <textarea name="content"></textarea>
       </div>
@@ -29,9 +30,7 @@
           <h4 class="name"><%= comment.userId[0].username %></h4>
           <time class="date"> <%= moment(comment.createAt).fromNow() %> </time>
         </div>
-        <div class="post-comment__item__content__text">
-          <%= comment.content %>
-        </div>
+        <div class="post-comment__item__content__text"><%= comment.content %></div>
         <% if(comment.userId[0]._id == locals?.user?._id) { %>
         <div class="post-comment__action">
           <a href="/postDetails/<%= comment.postId %>/<%=comment.id %>">Xóa</a>
