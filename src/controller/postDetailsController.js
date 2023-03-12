@@ -24,17 +24,14 @@ const addComments = async (req, res) => {
   const post = await Post.findById(req.params.id);
   const { content } = req.body;
   try {
+    // ajax request to add comments
     const comment = new Comment({
-      content,
       userId: req.session.user._id,
       postId: post._id,
+      content,
     });
-
     await comment.save();
-    await post.comments.push(comment);
-    await post.save();
-
-    res.redirect(`/postDetails/${req.params.id}`);
+    res.json({ comment });
   } catch (error) {
     res.redirect(`/postDetails/${req.params.id}`);
   }
