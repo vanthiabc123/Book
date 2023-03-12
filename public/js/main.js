@@ -19,29 +19,45 @@
 //   }
 // });
 
-const avatarUser = document.querySelector('.account-img');
-const accountMenu = document.querySelector('.account ul');
-avatarUser.addEventListener('click', function () {
-  accountMenu.classList.toggle('active');
+const avatarUser = document.querySelector(".account-img");
+const accountMenu = document.querySelector(".account ul");
+avatarUser.addEventListener("click", function () {
+  accountMenu.classList.toggle("active");
 });
-const commentList = document.querySelector('.post-comment__list');
+const commentList = document.querySelector(".post-comment__list");
 
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 const input = form.querySelector(`textarea[name="content"]`);
 // const postComment = document.querySelector('.post-comment');
 (() => {
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    const response = await fetch(`/postDetails/${form.dataset.id}/addcomments`, {
-      method: 'POST',
-      headers: {
-        Accept: 'application.json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ content: input.value }),
-    });
+    const response = await fetch(
+      `/postDetails/${form.dataset.id}/addcomments`,
+      {
+        method: "POST",
+        headers: {
+          Accept: "application.json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content: input.value }),
+      }
+    );
     const data = await response.json();
     console.log(data);
+    commentList.innerHTML += ` <div class="post-comment__item">
+    <div class="post-comment__item__avatar">
+      <img src="${data.avatar}" alt="" />
+    </div>
+    <div class="post-comment__item__content">
+      <div class="post-comment__item__content__info">
+        <h4 class="name">${data.username}</h4>
+        <time class="date">${data.createAt}</time>
+      </div>
+      <div class="post-comment__item__content__text">${data.comment}</div>
+    </div>
+  </div>
+  `;
+    input.value = "";
   });
 })();
