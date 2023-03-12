@@ -3,7 +3,7 @@
     <h3>Bình Luận</h3>
   </div>
   <div class="post-comment__form">
-    <form method="POST">
+    <form method="POST" action="/postDetails/<%- post._id%>/addcomments">
       <div class="form-group">
         <textarea name="content"></textarea>
       </div>
