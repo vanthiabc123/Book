@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="heading">Danh Mục <%- posts[0].categoryId.name %></h2>
+  <% if (posts.length < 1) { %>
+  <h2 class="heading">Không có bài viết nào trong danh mục này</h2>
+  <% } %>
+  <div class="post-list">
+    <% posts.forEach(element => { %>
+    <div class="post-item">
+      <a href="#" class="post-media">
+        <img src="<%= element.image %>" alt="" class="post-image" />
+      </a>
+      <a href="#" class="post-category"> <%= element.categoryId.name %> </a>
+      <h3>
+        <a href="#" class="post-title"> <%= element.title %> </a>
+      </h3>
+      <div class="post-desc">
+        <%= sanitizeHtml(element.content, { allowedTags: [], allowedAttributes:
+        {} }) %>
+      </div>
+      <a href="#" class="post-author">
+        <div class="post-author-info">
+          <time class="post-author-time">
+            Ngày Tạo: <%= moment(element.createAt).format("Do MMMM, YYYY"); %>
+          </time>
+        </div>
+      </a>
+    </div>
+    <% }) %>
+  </div>
+</div>

@@ -4,7 +4,11 @@
   </div>
 
   <div class="post-comment__form">
-    <form data-id="<%-post._id%>">
+    <form
+      class="form-comments"
+      data-id="<%-post._id%>"
+      data-user="<%- locals.user ? locals.user._id : null  %>"
+    >
       <div class="form-group">
         <textarea name="content"></textarea>
       </div>
@@ -21,9 +25,9 @@
   </div>
   <div class="post-comment__list">
     <% for (const comment of comments) { %>
-    <div class="post-comment__item">
+    <div class="post-comment__item" commentId="<%- comment._id %>">
       <div class="post-comment__item__avatar">
-        <img src="https://source.unsplash.com/random" alt="" />
+        <img src="<%= comment.userId[0].avatar  %>" alt="" />
       </div>
       <div class="post-comment__item__content">
         <div class="post-comment__item__content__info">
@@ -35,7 +39,9 @@
         </div>
         <% if(comment.userId[0]._id == locals?.user?._id) { %>
         <div class="post-comment__action">
-          <a href="/postDetails/<%= comment.postId %>/<%=comment.id %>">Xóa</a>
+          <a href="/postDetails/<%= comment.postId %>/<%=comment.id %>/delete"
+            >Xóa</a
+          >
         </div>
         <% } %>
       </div>

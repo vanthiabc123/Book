@@ -27,6 +27,9 @@ avatarUser.addEventListener("click", function () {
 const commentList = document.querySelector(".post-comment__list");
 
 const form = document.querySelector("form");
+const userId = document
+  .querySelector(".form-comments")
+  .getAttribute("data-user");
 const input = form.querySelector(`textarea[name="content"]`);
 // const postComment = document.querySelector('.post-comment');
 (() => {
@@ -55,9 +58,40 @@ const input = form.querySelector(`textarea[name="content"]`);
         <time class="date">${data.createAt}</time>
       </div>
       <div class="post-comment__item__content__text">${data.comment}</div>
+    ${
+      userId == data.userId
+        ? `
+        <div class="post-comment__action">
+        <a href="/postDetails/${form.dataset.id}/${data.commentId}/delete">Xóa</a>
+      </div>
+          `
+        : ""
+    }
     </div>
-  </div>
+      </div>
   `;
     input.value = "";
   });
 })();
+
+const deleteComment = document.querySelectorAll(".post-comment__action a");
+// use jquery to delete comment
+
+$(document).ready(function () {
+  $(".post-comment__action a").click(function (e) {
+    e.preventDefault();
+    const commentId = $(this).attr("href").split("/")[3];
+    const comment = $(this).parent().parent().parent();
+    $.ajax({
+      url: `/postDetails/${form.dataset.id}/${commentId}/delete`,
+      type: "GET",
+      success: function (data) {
+        if (data.message) {
+          alert(data.message);
+        } else {
+          comment.remove();
+        }
+      },
+    });
+  });
+});
