@@ -32,6 +32,8 @@ const addComments = async (req, res) => {
     await comment.save();
     res.status(200).json({
       comment: req.body.content,
+      commentId: comment._id,
+      userId: req.session.user._id,
       username: req.session.user.username,
       avatar: req.session.user.avatar,
       createAt: moment().fromNow(),
@@ -43,17 +45,18 @@ const addComments = async (req, res) => {
 };
 
 const deleteComments = async (req, res) => {
-  // check if the user is the owner of the comment
+  // ajax request to delete comments
   try {
     const comment = await Comment.findById(req.params.commentId);
     if (comment.userId == req.session.user._id) {
-      await Comment.findByIdAndDelete(req.params.commentId);
-      res.redirect(`/postDetails/${req.params.id}`);
+      console.log("ok");
+      await comment.remove();
+      res.status(200).json({ commentId: req.params.commentId });
     } else {
-      res.redirect(`/postDetails/${req.params.id}`);
+      res.status(200).json({ message: "Bạn không có quyền xóa bình luận này" });
     }
   } catch (error) {
-    res.redirect(`/postDetails/${req.params.id}`);
+    console.log(error);
   }
 };
 

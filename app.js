@@ -16,6 +16,7 @@ const homePageRouter = require("./src/routes/homePageRouter");
 const postDetailsRouter = require("./src/routes/postDetailsRouter");
 const methodOverride = require("method-override");
 const profileRouter = require("./src/routes/profileRouter");
+const postCategoryRouter = require("./src/routes/postCategoryRouter");
 
 // conect DB
 // Connection URL. This is where your mongodb server is running.
@@ -92,5 +93,6 @@ app.use("/", registerRouter);
 app.use("/", loginRouter);
 app.use("/", postDetailsRouter);
 app.use("/", profileRouter);
+app.use("/", postCategoryRouter);
 
 app.listen(port, () => console.info(`App listening on port ${port}`));

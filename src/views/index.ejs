@@ -6,7 +6,9 @@
       <a href="#" class="post-media">
         <img src="<%= post.image %>" alt="" class="post-image" />
       </a>
-      <a href="#" class="post-category"><%= post.categoryId.name %></a>
+      <a href="/category/<%- post.categoryId.id %>" class="post-category"
+        ><%= post.categoryId.name %></a
+      >
       <h3>
         <a href="/postDetails/<%=post.id%>" class="post-title"
           ><%= post.title %></a
