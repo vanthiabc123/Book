@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
 
 :root {
   --primary-color: #00040a;
@@ -33,7 +33,7 @@ textarea {
   padding: 0;
   margin: 0;
   outline: none;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 textarea {
@@ -62,7 +62,7 @@ body {
   font-size: var(--body-fize);
   color: var(--primary-color);
   font-weight: 400;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 /* sidebar */
 
@@ -82,7 +82,7 @@ body {
 
 .sidebar {
   position: fixed;
-  width: 240px;
+  width: 230px;
   top: 0;
   left: 0;
   height: 100%;
@@ -187,10 +187,10 @@ body {
 }
 main {
   position: relative;
-  width: calc(100% - 240px);
+  width: calc(100% - 230px);
   top: 0;
   height: 100%;
-  left: 240px;
+  left: 230px;
   transition: var(--smooth);
 }
 
@@ -240,7 +240,7 @@ main .top-header {
 
 .content {
   background-color: #f4f7fa;
-  height: 100%;
+  height: 100vh;
   padding: 15px 15px 5px 15px;
 }
 
@@ -270,7 +270,6 @@ main .top-header {
 /* table */
 
 .data-listtings {
-  overflow: scroll;
   height: auto;
   box-shadow: 0px 7px 10px 0px rgba(100, 100, 111, 0.4);
 }
@@ -614,7 +613,7 @@ tr:hover td {
     width: 75px;
   }
   .sidebar.collapse {
-    width: 240px;
+    width: 230px;
   }
 
   .sidebar .infor {
@@ -644,8 +643,8 @@ tr:hover td {
     left: 75px;
   }
   .sidebar.collapse ~ main {
-    width: calc(100% - 240px);
-    left: 240px;
+    width: calc(100% - 230px);
+    left: 230px;
   }
 }
 

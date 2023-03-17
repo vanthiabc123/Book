@@ -1,4 +1,5 @@
 const Category = require('../models/category');
+const Post = require('../models/posts');
 const path = require('path');
 const url = require('url');
 const newForm = async (req, res) => {
@@ -10,27 +11,24 @@ const newForm = async (req, res) => {
 
 const editForm = async (req, res) => {
   try {
-    console.log(req.params.id);
     const category = await Category.findById(req.params.id);
     res.render(path.join(__dirname, '..', 'views', 'admin', 'categories', 'edit'), {
       title: 'Sử danh mục',
       category: category,
     });
   } catch (error) {
-    console.log('loi tai editformed', error);
+    console.log('controller category:::', error);
     res.redirect('/admin/categories');
   }
 };
 
 const edit = async (req, res) => {
   try {
-    console.log('body edit', req.body);
     const category = await Category.findByIdAndUpdate(req.body.id, req.body, {
       runValidators: true,
     });
     res.redirect('/admin/categories');
   } catch (error) {
-    console.log(error);
     res.render(path.join(__dirname, '..', 'views', 'admin', 'categories', `edit`), {
       title: 'Sửa danh mục',
       category: req.body,
@@ -40,17 +38,23 @@ const edit = async (req, res) => {
 };
 const remove = async (req, res) => {
   try {
-    await Category.findByIdAndDelete(req.body.id);
-    res.redirect('/admin/categories');
+    const id = req.body.id;
+    const post = await Post.findOne({ categoryId: id });
+    if (post) {
+      res.redirect('/admin/categories');
+      return;
+    } else {
+      await Category.findByIdAndDelete(req.body.id);
+      res.redirect('/admin/categories');
+    }
   } catch (error) {
-    res.redirect('/admin/categories');
+    console.log(error);
   }
 };
 
 const create = async (req, res, next) => {
   const category = new Category(req.body);
   try {
-    console.log('save');
     await category.save();
     res.redirect('/admin/categories');
   } catch (error) {
