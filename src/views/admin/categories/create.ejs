@@ -1,16 +1,13 @@
 
-
-
-
 <%- include('../header') %>
 
 <div class="content">
   <div class="section-heading">
-    <h2>Sửa danh mục</h2>
+    <h2>Thêm danh mục</h2>
     <button><a href="/admin/categories">Quay lại</a></button>
   </div>
   <div>
-    <div class="form-editing">
+    <div class="form-editing" id="form-editing">
       <form method="POST" action="/admin/categories?_method=POST">
         <div class="form-group">
           <label class="form-label">Tên danh mục <span>*</span></label>
