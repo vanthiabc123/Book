@@ -49,7 +49,6 @@ const deleteComments = async (req, res) => {
   try {
     const comment = await Comment.findById(req.params.commentId);
     if (comment.userId == req.session.user._id) {
-      console.log("ok");
       await comment.remove();
       res.status(200).json({ commentId: req.params.commentId });
     } else {
