@@ -29,5 +29,49 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="../../../js/main.js"></script>
+    <script>
+      const post_list = document.querySelector(".post-list-new");
+      function loadMore(page, limit) {
+        $.ajax({
+          url: "/loadMore?page=" + page + "&limit=" + limit,
+          type: "GET",
+          success: function (data) {
+            console.log(data);
+            if (data.length === 0) {
+              $("#load-more").hide();
+            }
+            data.forEach(function (post) {
+              var html = `<div class="post-item">
+              <a href="/postDetails/${post.id}" class="post-media">
+                <img src="${post.image}" alt="" class="post-image" />
+              </a>
+              <a href="/category/${post.categoryId.id}" class="post-category">${post.categoryId.name}</a>
+              <h3>
+                <a href="/postDetails/${post.id}" class="post-title">${post.title}</a>
+              </h3>
+              <div class="post-desc">${post.content}</div>
+              <a href="#" class="post-author">
+                <div class="post-author-info">
+                  
+                </div>
+              </a>
+            </div>`;
+              post_list.innerHTML += html;
+            });
+          },
+          error: function (error) {
+            console.log(error);
+          },
+        });
+      }
+      $(document).ready(function () {
+        var page = 2;
+        var limit = 3;
+        $("#load-more").click(function () {
+          loadMore(page, limit);
+          page++;
+        });
+      });
+    </script>
   </body>
 </html>

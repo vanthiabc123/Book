@@ -1,6 +1,6 @@
 <div class="post-new">
   <h2 class="heading">Bài Viết Mới Nhất</h2>
-  <div class="post-list">
+  <div class="post-list post-list-new">
     <% posts.forEach(function(post) { %>
     <div class="post-item">
       <a href="/postDetails/<%= post.id %>" class="post-media">
@@ -26,7 +26,14 @@
     </div>
     <% }); %>
     <div class="show-more-btn">
-      <button type="button" class="btn btn-primary" id="">Xem Thêm</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        id="load-more"
+        data-page="2"
+      >
+        Xem Thêm
+      </button>
     </div>
   </div>
 </div>
