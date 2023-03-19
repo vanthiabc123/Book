@@ -140,21 +140,51 @@ $(document).ready(function () {
   });
 });
 
-// const deleteComment = document.querySelectorAll(".post-comment__action a");
 // $(document).ready(function () {
-//   $(".post-comment__action a").click(function (e) {
-//     e.preventDefault();
-//     const commentId = $(this).parent().parent().parent().attr("commentId");
-//     const comment = $(this).parent().parent().parent();
+//   var page = 2;
+//   var limit = 4;
+//   $("#load-more").click(function () {
 //     $.ajax({
-//       url: `/postDetails/${form.dataset.id}/${commentId}/delete`,
 //       type: "GET",
+//       url: "/loadMore?page=" + page + "&limit=" + limit,
 //       success: function (data) {
-//         if (data.message) {
-//           alert(data.message);
+//         if (data.length > 0) {
+//           var html = "";
+//           data.forEach(function (post) {
+//             console.log(post);
+//             html += `
+//             <div class="post-item">
+//             <a href="/postDetails/${post.id}" class="post-media">
+//               <img src="${post.image}" alt="" class="post-image" />
+//             </a>
+//             <a href="/category/${post.categoryId.id}" class="post-category"
+//               >${post.categoryId.name}</a
+//             >
+//             <h3>
+//               <a href="/postDetails/<%= post.id %>" class="post-title"
+//                 >${post.title}</a
+//               >
+//             </h3>
+//             <div class="post-desc">${post.content}</div>
+//             <a href="#" class="post-author">
+//               <div class="post-author-info">
+//                 <time class="post-author-time"
+//                   >Ngày Tạo: ${post.createAt}</time
+//                 >
+//               </div>
+//             </a>
+//           </div>
+//             `;
+//           });
+//           $(".post-new post-list").append(html);
+//           page++;
 //         } else {
-//           comment.remove();
+//           $("#load-more").attr("disabled", true);
+//           $("#load-more").text("Không Có Nội Dung Nữa");
 //         }
+//       },
+//       error: function (err) {
+//         console.log(err);
 //       },
 //     });
 //   });
