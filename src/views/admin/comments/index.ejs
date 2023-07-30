@@ -1,0 +1,33 @@
+<%- include('../header') %>
+
+<!-- bảng tên người cmt ngày cmt nội dung cmt -->
+<div class="content">
+  <div class="section-heading">
+    <h2>Danh Sách Bình Luận</h2>
+  </div>
+  <div class="data-listtings">
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên</th>
+            <th>Ngày Cmt</th>
+            <th>Nội Dung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% comments.reverse(); %> <% for (var i = 0; i < comments.length; i++)
+          { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= comments[i].userId.username %></td>
+            <td><%= new Date(comments[i].createAt).toLocaleDateString() %></td>
+            <td><%= comments[i].content %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

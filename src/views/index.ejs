@@ -1,6 +1,57 @@
+
+<div class="container-fluid" >
+  <!-- Carousel -->
+  <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="500">
+
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
+
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/images/sachmoisw-01.jpg" alt="Los Angeles" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/sachmoisw-02.jpg" alt="Chicago" class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="/images/sachmoisw-03.jpg" alt="New York" class="d-block w-100">
+    </div>
+  </div>
+
+  <!-- Left and right controls/icons -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+</div>
+
+<h2 class="heading" style="margin-left: 170px;">Lời Mở Đầu</h2>
 <div class="container">
-  <h2 class="heading">Bài Viết Nổi Bật</h2>
-  <div class="post-list">
+  <div class="row">
+    <div class="col-md-6" style="background-color: antiquewhite;" data-aos="fade-up"
+    data-aos-duration="3000">
+      <p style="text-align: center;font-weight: bold;font-size: 26px;">Demo</p>
+     
+“Hà Nội băm sáu phố phường” chủ yếu viết về chuyện phố, chuyện phường, đời sống dân sinh, đặc biệt là đi sâu vào những thức quà chỉ riêng nơi đây mới có. Trên mỗi trang viết giản dị, mộc mạc là hình ảnh một Hà Nội xưa quyến rũ lạ kì, níu chân bất cứ vị khách nào lại qua. Đó là hình ảnh những mái nhà cổ kính bên những con đường quanh co, mềm mại, là nét văn hoá ẩm thực tinh tế… giữa không gian êm ả, thanh bình. Đọc xong cuốn sách, độc giả sẽ cảm nhận được toàn bộ vóc dáng và tâm hồn Hà Nội xưa., Cuốn sách là tập hợp hai mươi mốt bài kí nhỏ như hai mươi mốt bức họa đầy hoài niệm, dựng nên hình bóng Hà Nội xưa với nhiều cảnh đời khác nhau. Đó có thể là những người phụ nữ tần tảo, sống một cuộc đời lầm lũi, vất vả với gánh nặng cơm áo gạo tiền. Nhưng thấp thoáng giữa các số phận éo le đó lại ẩn hiện tình yêu đôi lứa trong sáng và thuần khiết. Tất cả đều là những câu chuyện về những con người Hà Nội, nép mình dưới những khu phố khác nhau, với những mảnh ghép cuộc đời khác nhau, hiện lên đơn sơ bằng ngòi bút chân thực của tác giả. Ông đã nhắc đến “nghệ thuật biển hàng” đang dần biến mất vì sự Tây hóa, học đòi của các chủ quán khiến văn hóa tiếng việt của dân tộc bị lu mờ.
+    </div>
+    <div class="col-md-6" data-aos="fade-up"
+    data-aos-duration="1000">
+      <img src="https://cth.edu.vn/wp-content/uploads/nhasachminhthang.vn/UserFiles/files/Van-Hoc/Ha-Noi-Bam-sau-pho-phuong.png" alt="">
+    </div>
+  </div>
+</div>
+<div class="container">
+  <h2 class="heading">Quyển Sách Nổi Bật</h2>
+  <div class="post-list" data-aos="fade-up"
+  data-aos-duration="3000">
     <% postFeature.forEach(function(post) { %>
     <div class="post-item">
       <a href="#" class="post-media">
@@ -30,4 +81,55 @@
     <% }); %>
   </div>
   <div><%- include("../views/postNew.ejs") %></div>
+</div>
+
+
+
+<div class="container-fluid" style="background-color: rgb(9, 8, 8);color: white;margin-top: 30px;">
+  <div class="row" style="margin-top: 30px;">
+    <div class="col-xl-3 col-lg-4 col-md-6">
+      <div style="margin-top: 10px;">
+        <h1 style="font-weight: bold;">BookStores</h1>
+        <p class="mb-30 footer-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad soluta facilis
+          eos quia optio iusto odit atque eum tempore, quisquam officiis vero veniam hic,</p>
+      </div>
+  </div>
+  <div class="col-xl-3 offset-xl-1 col-lg-2 col-md-6" style="margin-left: 100px;">
+    <div class="" style="margin-top: 10px;">
+      <h1 style="font-weight: bold;font-size: 30px;margin-left: 12px;">Quick Link</h1>
+      <ul class="list-unstyled" style="margin-left: 60px;">
+        <li>
+          <a href="#" class="text-decoration-none">Home</a>
+        </li>
+        <li>
+          <a href="#" class="text-decoration-none">About Us</a>
+        </li>
+        <li>
+          <a href="#" class="text-decoration-none">Service</a>
+        </li>
+        <li>
+          <a href="#" class="text-decoration-none">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-3 col-md-6" style="margin-left: 150px;">
+    <div>
+
+      <div style="margin-top: 10px;">
+        <label for="Newsletter" class="form-label" style="font-weight: bold;">Subscribe To Our Newsletter</label>
+        <input type="text" class="form-control" Placeholder="Enter Your Email">
+        <button class="btn btn-danger mt-3">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="copyright">
+    <p>Developed and maintained by <a href="#" target="_blank">company</a></p>
+  </div>
+</div>
+</div>
+
+</div>
 </div>

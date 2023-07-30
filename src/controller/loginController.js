@@ -10,7 +10,15 @@ const login = async (req, res) => {
       const isValid = await user.isValidPassword(password);
       if (isValid) {
         req.session.user = user;
-
+        // res
+        //   .status(200)
+        //   .json({
+        //     user: user._id,
+        //     username: user.username,
+        //     email: user.email,
+        //     password: user.password,
+        //     createdAt: user.createAt,
+        //   });
         if (req.session.user.username !== "admin") res.redirect("/");
         else res.redirect("/admin/posts");
       } else {

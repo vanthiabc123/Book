@@ -5,6 +5,9 @@ const path = require('path');
 // const fileUploader = require('../middlewares/cloudinary');
 const cloudinary = require('cloudinary').v2;
 
+// Đoạn mã trên định nghĩa một hàm bất đồng bộ list
+//  nhận vào hai tham số req và res. Hàm này được thiết kế để lấy
+//  danh sách bài viết dựa trên các yêu cầu tìm kiếm được truyền vào thông qua tham số req.query.
 const list = async (req, res) => {
   try {
     let searchOptions = {};
@@ -31,7 +34,7 @@ const list = async (req, res) => {
     res.status(404);
   }
 };
-
+// tạo ra form html
 const newForm = async (req, res) => {
   try {
     const categories = await Category.find({}).select('_id name');
@@ -46,7 +49,7 @@ const newForm = async (req, res) => {
     console.log(error);
   }
 };
-
+// form sửa
 const editForm = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
@@ -63,7 +66,7 @@ const editForm = async (req, res) => {
     res.redirect('/admin/posts');
   }
 };
-
+// chức nawg xóa
 const remove = async (req, res) => {
   try {
     const post = await Post.findByIdAndDelete(req.body.id, { new: true });
@@ -85,7 +88,7 @@ const getAllCategory = async () => {
     return [];
   }
 };
-
+// thêm sp
 const create = async (req, res, next) => {
   console.log(req.file);
   const newPost = {
@@ -109,7 +112,7 @@ const create = async (req, res, next) => {
     });
   }
 };
-
+// chức nawg sửa
 const edit = async (req, res, next) => {
   const newPost = {
     categoryId: req.body?.categoryId,

@@ -2,7 +2,7 @@
   <section class="login container">
     <div class="login-main">
       <h3 class="headding">Đăng Nhập</h3>
-      <form class="form-sign" method="POST">
+      <form class="form-sign"  onsubmit="return check()" method="POST">
         <div class="text-field">
           <label for="email">Nhập email tài khoản</label>
           <input
@@ -53,3 +53,29 @@
     </div>
   </section>
 </main>
+<script>
+    function check(){
+                var loi;
+               
+                var email = document.getElementById("email");
+                if (email.value.length == 0) {
+                    alert("Bạn chưa nhập Email");
+                    email.style.border = "2px solid red";
+                    email.style.background = "red";
+                    return false;
+                } else {
+                    email.style.border = "2px solid rgb(16, 233, 0)";
+                    email.style.background = "none";
+                }
+                var password = document.getElementById("password");
+                if (password.value.length == 0) {
+                    alert("Bạn chưa nhập password");
+                    password.style.border = "2px solid red";
+                    password.style.background = "red";
+                    return false;
+                } else {
+                  password.style.border = "2px solid rgb(16, 233, 0)";
+                  password.style.background = "none";
+                }
+              }
+</script>

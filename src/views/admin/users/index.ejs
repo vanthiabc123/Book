@@ -1,0 +1,30 @@
+<%- include('../header') %>
+<div class="content">
+  <div class="section-heading">
+    <h2>Danh Sách Thành Viên</h2>
+  </div>
+  <div class="data-listtings">
+    <div class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Ngày Sinh</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i < users.length; i++) { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= users[i].username %></td>
+            <td><%= users[i].email %></td>
+            <td><%= new Date(users[i].birthday).toLocaleDateString() %></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

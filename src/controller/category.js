@@ -2,13 +2,14 @@ const Category = require('../models/category');
 const Post = require('../models/posts');
 const path = require('path');
 const url = require('url');
+// Chức năng trả về một view để tạo mới danh mục. 
 const newForm = async (req, res) => {
   res.render(path.join(__dirname, '..', 'views', 'admin', 'categories', 'create'), {
     category: new Category(),
     title: 'Thêm danh mục',
   });
 };
-
+// Chức năng này trả về một view để chỉnh sửa danh mục.
 const editForm = async (req, res) => {
   try {
     const category = await Category.findById(req.params.id);
@@ -21,7 +22,7 @@ const editForm = async (req, res) => {
     res.redirect('/admin/categories');
   }
 };
-
+// Chức năng này cập nhật một danh mục có id là req.body.id
 const edit = async (req, res) => {
   try {
     const category = await Category.findByIdAndUpdate(req.body.id, req.body, {
@@ -36,6 +37,7 @@ const edit = async (req, res) => {
     console.log(error);
   }
 };
+// Chức năng này xóa một danh mục có id là req.body.id
 const remove = async (req, res) => {
   try {
     const id = req.body.id;
@@ -51,7 +53,7 @@ const remove = async (req, res) => {
     console.log(error);
   }
 };
-
+//  Chức năng này tạo mới một danh mục với thông tin trong req.body
 const create = async (req, res, next) => {
   const category = new Category(req.body);
   try {

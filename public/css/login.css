@@ -42,7 +42,7 @@ h6 {
 }
 
 :root {
-  --primaryBtn: #1a1a40;
+  --primaryBtn: #1a05fc;
 }
 [data-theme="dark"] {
   --primaryBtn: #ff6464;

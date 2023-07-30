@@ -2,7 +2,7 @@
   <section class="signup container">
     <div class="signup-main">
       <h3 class="headding">Đăng Ký</h3>
-      <form class="form-sign" method="POST">
+      <form class="form-sign"  onsubmit="return check()" method="POST">
         <div class="text-field">
           <label for="username">Tên Tài Khoản</label>
           <input
@@ -61,11 +61,6 @@
           />
           <span class="error"></span>
         </div>
-        <div class="text-field">
-          <label>Ảnh Đại Diện</label>
-          <input type="file" name="avatar" />
-          <span class="error"></span>
-        </div>
         <label for="gender">Giới Tính</label>
         <select name="gender" id="">
           <option value="1">Nam</option>
@@ -76,3 +71,39 @@
     </div>
   </section>
 </main>
+<script>
+    function check(){
+                var loi;
+                var username = document.getElementById("username");
+                if (username.value.length == 0) {
+                    alert("Bạn chưa nhập họ và tên");
+                    username.style.border = "2px solid red";
+                    username.style.background = "red";
+                    return false;
+                } else {
+                    username.style.border = "2px solid rgb(16, 233, 0)";
+                    username.style.background = "none";
+                }
+               
+                var email = document.getElementById("email");
+                if (email.value.length == 0) {
+                    alert("Bạn chưa nhập Email");
+                    email.style.border = "2px solid red";
+                    email.style.background = "red";
+                    return false;
+                } else {
+                    email.style.border = "2px solid rgb(16, 233, 0)";
+                    email.style.background = "none";
+                }
+                var password = document.getElementById("password");
+                if (password.value.length == 0) {
+                    alert("Bạn chưa nhập password");
+                    password.style.border = "2px solid red";
+                    password.style.background = "red";
+                    return false;
+                } else {
+                  password.style.border = "2px solid rgb(16, 233, 0)";
+                  password.style.background = "none";
+                }
+              }
+</script>

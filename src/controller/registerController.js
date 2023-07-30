@@ -13,8 +13,7 @@ const register = async (req, res) => {
       birthday,
       avatar: "",
     });
-    req.session.user = user;
-    res.redirect("/");
+    res.redirect("/login");
   } catch (error) {
     console.log(error);
     res.redirect("/register");

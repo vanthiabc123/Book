@@ -9,6 +9,7 @@ const showPage = async (req, res) => {
     path: "categoryId",
     select: "name",
   });
+  
   const user = req.session.user;
   const comments = await Comment.find({ postId: post._id }).populate("userId");
   res.render("postDetails", {
@@ -20,6 +21,7 @@ const showPage = async (req, res) => {
     sanitizeHtml,
   });
 };
+// add comments
 const addComments = async (req, res) => {
   const post = await Post.findById(req.params.id);
   try {
@@ -43,12 +45,12 @@ const addComments = async (req, res) => {
     res.redirect(`/postDetails/${req.params.id}`);
   }
 };
-
+// xóa
 const deleteComments = async (req, res) => {
   // ajax request to delete comments
   try {
     const comment = await Comment.findById(req.params.commentId);
-    if (comment.userId == req.session.user._id) {
+    if (comment.userId._id == req.session.user._id) {
       await comment.remove();
       res.status(200).json({ commentId: req.params.commentId });
     } else {
