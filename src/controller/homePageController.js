@@ -46,7 +46,10 @@ const loadMore = async (req, res) => {
   }
 };
 
-module.exports = {
-  showPage,
-  loadMore,
-};
+// module.exports = {
+//   showPage,
+//   loadMore,
+// };
+module.exports={
+  showPage,loadMore,
+}
